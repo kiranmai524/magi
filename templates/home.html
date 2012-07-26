@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+
+{% load get_list_of_commits %}
+
+{% block content %}
+
+        Username : {{ user_name }}<br />
+        Organization : {{ user_org }}<br />
+        Number of Followers : {{ number_of_followers }}<br/>
+        Number of User Repos : {{ number_of_user_repos }}<br/><br/>
+
+        <ol>
+        {% for repo in user_repos %}
+            <li><a href="https://github.com/{{ user_name }}/{{ repo.name }}/"> {{ repo.name }}</a></li>
+            {% get_list_of_commits repo.name user_name %}
+        {% endfor %}
+        </ol>
+{% endblock %}

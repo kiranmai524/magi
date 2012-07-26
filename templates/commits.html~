@@ -1,0 +1,9 @@
+<ul>
+{% for c in commit_list %}
+    <li>
+        Commit Message : {{c.commit.message}}<br/>
+        by {{ c.commit.committer.name }} <br/>
+        on {{ c.commit.committer.date }}
+    </li>
+{% endfor %}
+</ul>

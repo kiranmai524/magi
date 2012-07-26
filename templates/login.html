@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% block content %}
+        {% if error_message %}
+            {{ error_message }}
+        {% endif %}
+        <form action="." method="POST">
+            
+            {% csrf_token %}
+        
+            Username : <input type="text" name="username"/><br />
+            Password : <input type="password" name="password"/><br /><br />
+            
+            <input type="submit" value="Sign in"/>
+        </form>
+{% endblock %}

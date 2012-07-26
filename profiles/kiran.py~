@@ -1,0 +1,32 @@
+#from github.auth import github_auth, sendgrid_auth
+from pygithub3 import Github
+from pygithub3.services.repos import Commits
+from datetime import datetime, timedelta
+from dateutil import tz
+from dateutil.parser import parse
+from mailing_list import email_to
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+
+def main():
+    gh = Github(login='', password='')
+    
+    user = gh.users.get()
+    user_repos = gh.repos.list().all()
+
+    for repo in user_repos:
+        repo_commit = Commits(user=request.POST['username'], repo=repo.name)
+        commit_list = user_commit.list(sha='master', path=None).all()
+        for k in commit_list:
+            cdt = parse(k.commit.committer.date)
+            commit_date_time = cdt.astimezone(local_zone)
+            commit_date = commit_date_time.date()
+
+            print commit_date_time
+            name = k.commit.committer.name.encode('ascii', 'ignore')
+
+
+if __name__ == '__main__':
+    main()
